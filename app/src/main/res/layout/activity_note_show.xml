@@ -132,10 +132,21 @@
         android:id="@+id/save"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Save"
         android:padding="10dp"
+        android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/delete" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/save"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/back" />
 
@@ -143,10 +154,10 @@
         android:id="@+id/back"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Back"
         android:padding="10dp"
+        android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/save"
+        app:layout_constraintEnd_toStartOf="@+id/delete"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent" />
 

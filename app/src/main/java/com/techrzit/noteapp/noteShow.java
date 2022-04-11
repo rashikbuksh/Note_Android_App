@@ -4,13 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class noteShow extends AppCompatActivity {
 
-    Button save,cancel, back;
+    Button save,delete, back;
     MyDatabaseHelper DB;
     EditText courseid, title, dateoflecture, description;
     int noteid;
@@ -26,11 +26,22 @@ public class noteShow extends AppCompatActivity {
         description = findViewById(R.id.description);
         save = findViewById(R.id.save);
         back = findViewById(R.id.back);
+        delete = findViewById(R.id.delete);
+        delete.setVisibility(View.INVISIBLE);
         DB= new MyDatabaseHelper(this);
 
         save.setOnClickListener(v->saveInDB());
         back.setOnClickListener(v->onBackPressed());
-
+        delete.setOnClickListener(v->{
+            Boolean noError = DB.deleteNote(noteid);
+            if(noError){
+                System.out.println("Successful");
+            }
+            else{
+                System.out.println("Unsuccessful");
+            }
+            initializeFormWithExistingData();
+        });
 
     }
 
@@ -40,6 +51,7 @@ public class noteShow extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             noteid = extras.getInt("noteid");
+            delete.setVisibility(View.VISIBLE);
         }
         //System.out.println(noteid);
         initializeFormWithExistingData();

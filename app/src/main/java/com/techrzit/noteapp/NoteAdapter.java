@@ -15,6 +15,7 @@ public class NoteAdapter extends BaseAdapter {
     Context context;
     ArrayList<Note> arrayList;
     int noteid;
+    MyDatabaseHelper DB;
     public NoteAdapter(Context context, ArrayList<Note> arrayList){
         this.context = context;
         this.arrayList = arrayList;
